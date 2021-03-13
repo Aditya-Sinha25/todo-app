@@ -62,7 +62,7 @@ module.exports.createSession =function(req,res){
 
 module.exports.destroySession =function(req,res){
     console.log('destroy session:');
-    console.log(req);
+    //console.log(req);
     req.logout();
     return res.redirect('/');
    //return res.render('home',{
@@ -89,56 +89,17 @@ module.exports.createList =async function(req,res){
     }
 }
 
-//module.exports.homeUser = async function(req,res){
-//    //console.log(req.params.id);
-//
-//   //let user =await User.findById({_id:req.params.id},function(err,foundUser){
-//   //    if(err){
-//   //        console.log('Error in finding the user');
-//   //        console.log(err);
-//   //    }
-//   //    foundUser.populate('list').
-//   //    exec(function(err,doc){
-//   //        if(err){
-//   //            console.log('error comming from user home');
-//   //            console.log('err');
-//   //        }
-//   //        return res.render('user_home',{
-//   //            title:'User Home',
-//   //            user:doc
-//   //        })
-//   //    })
-//   //})
-//
-//    let user=await User.findById(req.params.id).
-//        populate('list').
-//        exec(function(err,doc){
-//            if(err){
-//                console.log('error occuring form there');
-//                console.log(err);
-//            }
-//            return res.render('user_home',{
-//                title:'User Home',
-//                user:doc
-//            })
-//        })
-//
-//
-//}
 
 module.exports.homeUser =async function(req,res){
+
     try{
         let user =await User.findById(req.params.id)
-        .populate('list').
-        exec(function(err,doc){
-            if(err){
-                console.log('Error coming from homeUser',err);
-            }
-            return res.render('user_home',{
-                title:'User Home',
-                user:doc
-            })
-        })
+        .populate('list');
+        return res.render('user_home',{
+            title:'User Profile',
+            user:user
+        });
+
     }catch(err){
         console.log('Error: ',err);
         return;
