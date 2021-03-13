@@ -18,7 +18,7 @@
                     </form>
                 </li>
                 <% for(let i of user.list) {%>
-                        <li><%= i.description %></li>
+                        <li><a href="/users/destroy/<%= i._id%>">X</a><%= i.description %></li>
                         <li><%= i.category %></li>
                         <li><%= i.date %></li>
                 <%} %>

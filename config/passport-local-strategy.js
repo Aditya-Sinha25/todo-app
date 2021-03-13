@@ -7,6 +7,7 @@ passport.use(new LocalStrategy({
     },
     function(email,password,done){
         //find a user and establish the identity
+        //console.log('Done: ',done);
         User.findOne({email:email}, function(err,user){
             if(err){
                 console.log('Error in findig the user');

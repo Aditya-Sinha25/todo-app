@@ -57,6 +57,7 @@ module.exports.create=function(req,res){
 
 module.exports.createSession =function(req,res){
     //console.log(req.session.passport.user);
+    //console.log(req);
     return res.redirect(`/users/${req.session.passport.user}`);
 }
 
@@ -104,4 +105,21 @@ module.exports.homeUser =async function(req,res){
         console.log('Error: ',err);
         return;
     }
+}
+
+module.exports.destroyList =function(req,res){
+    //console.log('something happing');
+    //console.log(req.user);
+    //console.log(req.params.id);
+    List.findById(req.params.id,function(err,list){
+        if(err){
+            console.log('Destroy list error: ',err)
+            return res.redirect('back');
+        }
+        list.remove();
+        User.findByIdAndUpdate(req.user.id,{$pull:{list:req.params.id}},
+            function(err,user){
+                return res.redirect('back');
+            })
+    });
 }
