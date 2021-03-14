@@ -17,6 +17,12 @@ app.use(cookieParser());
 
 app.use(express.static('./assets'));
 
+const expressLayouts =require('express-ejs-layouts');
+app.use(expressLayouts);
+
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
 
 
 
