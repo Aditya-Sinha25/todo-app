@@ -7,6 +7,7 @@ const session =require('express-session');
 const passport =require('passport');
 const passportLocal =require('./config/passport-local-strategy');
 const MongoStore =require('connect-mongo').default;
+const flash =require('connect-flash');
 const customMiddleware =require('./config/middleware');
 
 
@@ -28,13 +29,6 @@ app.set('layout extractScripts',true);
 
 app.set('view engine','ejs');
 app.set('views','./views');
-
-
-//const mongoStore =MongoStore.create({
-//    mongoUrl:'mongodb://localhost/todo_development',
-//    collectionName:'sessions',
-//});
-
 
 
 //mongo store is used to store the session cookie
@@ -64,8 +58,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
-//app.use(flash());
-//app.use(customMiddleware.setFlash);
+app.use(flash());
+app.use(customMiddleware.setFlash);
 
 app.use('/',require('./routes'));
 

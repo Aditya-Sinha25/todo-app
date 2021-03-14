@@ -58,6 +58,7 @@ module.exports.create=function(req,res){
 module.exports.createSession =function(req,res){
     //console.log(req.session.passport.user);
     //console.log(req);
+    req.flash('success','Logged in successfully');
     return res.redirect(`/users/${req.session.passport.user}`);
 }
 
@@ -65,6 +66,7 @@ module.exports.destroySession =function(req,res){
     console.log('destroy session:');
     //console.log(req);
     req.logout();
+    req.flash('success','You have logged out');
     return res.redirect('/');
    //return res.render('home',{
    //    title:'home'
