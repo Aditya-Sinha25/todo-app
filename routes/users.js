@@ -15,7 +15,7 @@ router.post('/list/:id',passport.checkAuthentication,userController.createList);
 router.post('/create',userController.create);
 router.post('/create-session',passport.authenticate(
     'local',
-    {failureRedirect:'/sign-in'},
+    {failureRedirect:'/users/sign-in'},
 ),userController.createSession);
 
 router.get('/destroy/:id',passport.checkAuthentication,userController.destroyList);

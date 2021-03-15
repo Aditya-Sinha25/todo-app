@@ -56,7 +56,6 @@ module.exports.create=function(req,res){
 
 
 module.exports.createSession =function(req,res){
-    //console.log(req.session.passport.user);
     //console.log(req);
     req.flash('success','Logged in successfully');
     return res.redirect(`/users/${req.session.passport.user}`);
@@ -64,13 +63,9 @@ module.exports.createSession =function(req,res){
 
 module.exports.destroySession =function(req,res){
     console.log('destroy session:');
-    //console.log(req);
     req.logout();
     req.flash('success','You have logged out');
     return res.redirect('/');
-   //return res.render('home',{
-   //    title:'home'
-   //});
 }
 
 module.exports.createList =async function(req,res){
@@ -84,10 +79,12 @@ module.exports.createList =async function(req,res){
     if(user){
         user.list.push(list);
         user.save();
+        req.flash('success','Task added successfully');
         return res.redirect('back');
     }
     else{
         console.log('There was some error');
+        req.flash('error','Error in adding the task');
         return res.redirect('/');
     }
 }
@@ -110,15 +107,14 @@ module.exports.homeUser =async function(req,res){
 }
 
 module.exports.destroyList =function(req,res){
-    //console.log('something happing');
-    //console.log(req.user);
-    //console.log(req.params.id);
     List.findById(req.params.id,function(err,list){
         if(err){
-            console.log('Destroy list error: ',err)
+            console.log('Destroy list error: ',err);
+            req.flash('error','Error in deleting the task');
             return res.redirect('back');
         }
         list.remove();
+        req.flash('success','Task deleted successfully');
         User.findByIdAndUpdate(req.user.id,{$pull:{list:req.params.id}},
             function(err,user){
                 return res.redirect('back');

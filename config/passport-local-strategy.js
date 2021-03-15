@@ -4,10 +4,12 @@ const User =require('../models/user');
 
 passport.use(new LocalStrategy({
         usernameField:'email',
+        passReqToCallback:true
     },
-    function(email,password,done){
+    function(req,email,password,done){
         //find a user and establish the identity
         //console.log('Done: ',done);
+        console.log('Req: ',req);
         User.findOne({email:email}, function(err,user){
             if(err){
                 console.log('Error in findig the user');
@@ -17,7 +19,8 @@ passport.use(new LocalStrategy({
 
             if(!user || user.password!=password){
                 console.log('Invalid username/password');
-                req.flash('error','Invalid username/password')
+                req.flash('error','Invalid username/password');
+
                 return done(null,false);
             }
 
