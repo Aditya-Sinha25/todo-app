@@ -1,0 +1,126 @@
+
+/*Adding styles to the body*/
+body{
+    margin:0px;
+    /*background-image: url('/images/back.jpg');*/
+    background-color: black;
+    background-size: cover;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Styling to the heading*/
+h1{
+    text-align: center;
+    color:white;
+    background-color: black;
+}
+
+/*Styling to the main card that contains all the elements*/
+.card{
+    position: relative;
+    width:600px;
+    height:600px;
+    margin:auto;
+    padding:20px;
+    background-image: url('/images/card1.png');
+    background-size: contain;
+    border:1px solid white;
+    box-shadow: 10px 10px 8px #888888 ;
+    overflow-y: auto;  
+}
+
+/*Adding styles to the form tag*/
+#create-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+}
+/*Adding styles to the input and select */
+#create-list input , select{
+    max-width: 90%;
+    margin: 15px;
+    padding: 4px 8px;
+    border: 0px solid transparent;
+    background: transparent;
+    color:grey;
+    width: 90%;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    border-bottom:3px solid whitesmoke;
+}
+
+/*Input name description*/
+#description{
+    display: block;
+    width:100%;
+    margin-bottom: 10px;
+}
+/*Input name date and category*/
+#date,#category{
+    display: inline-block;
+    width:40%;
+}
+/*Input type submit*/
+#submit{
+    display:block;
+    width:50%;
+    margin:auto;
+    margin-top:10px;
+}
+/*Submit button*/
+#submit button{
+    width:80%;
+    height:50px;
+    font-size: 2rem;
+    background-color: red;
+}
+/*Removing the default style of the list*/
+.list{
+    list-style:none;
+     
+}
+/*Styling the tasks*/
+.show{
+    height:auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    background:transparent;
+    border:2px solid #6b7591;
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    border-radius: 20px;
+    margin-top: 2px;
+}
+.show li{
+    margin-top: 10px;
+}
+.show li a{
+    text-decoration: none;
+    color:white;
+}
+
+.show li:nth-child(2) span{
+    height: auto;
+    width: auto;
+    background-color: seagreen;
+    padding:5px;
+}
+.show li:nth-child(3) span{
+    font-size: 0.8rem;
+
+}
+.description{
+    display: inline-block;
+    width:475px;
+}
+.description::first-letter{
+    text-transform: capitalize;
+}
+/*Delete button*/
+.delete{
+    display: inline-block;
+    width:25px;
+}

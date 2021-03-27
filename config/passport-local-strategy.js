@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
     function(req,email,password,done){
         //find a user and establish the identity
         //console.log('Done: ',done);
-        console.log('Req: ',req);
+        //console.log('Req: ',req);
         User.findOne({email:email}, function(err,user){
             if(err){
                 console.log('Error in findig the user');
@@ -54,7 +54,7 @@ passport.checkAuthentication =function(req,res,next){
         return next();
     }
     //if the user is not signed in
-    return res.redirect('/users/sign-in');
+    return res.redirect('/sign-in');
 }
 
 passport.setAuthenticatedUser =function(req,res,next){
