@@ -3,7 +3,7 @@
 body{
     margin:0px;
     /*background-image: url('/images/back.jpg');*/
-    background-color: black;
+    background-color: #1d2d50;
     background-size: cover;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +13,23 @@ body{
 h1{
     text-align: center;
     color:white;
-    background-color: black;
+    background-color: #1d2d50;
+}
+
+#create-list a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #1d2d50;
+    max-width: 90%;
+    margin: 15px;
+    padding: 4px 8px;
+    border: 2px solid #fcdab7;
+    background: #fcdab7;
+    width: 90%;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    cursor:pointer;
+    text-align: center;
 }
 
 /*Styling to the main card that contains all the elements*/
@@ -23,22 +39,32 @@ h1{
     height:600px;
     margin:auto;
     padding:20px;
-    background-image: url('/images/card1.png');
+    /*background-image: url('/images/card1.png');*/
     background-size: contain;
     border:1px solid white;
     box-shadow: 10px 10px 8px #888888 ;
     overflow-y: auto;  
+    
 }
+.card ul{
+    list-style: none;
+}
+
+.card p{
+    text-align: center;
+}
+
+
 
 /*Adding styles to the form tag*/
 #create-list{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     width:100%;
 }
 /*Adding styles to the input and select */
-#create-list input , select{
+.form-input{
     max-width: 90%;
     margin: 15px;
     padding: 4px 8px;
@@ -48,8 +74,21 @@ h1{
     width: 90%;
     line-height: 1.6;
     font-size: 1.05rem;
-    border-bottom:3px solid whitesmoke;
+    border-bottom:3px solid #fcdab7;
 }
+.btn{
+    max-width: 90%;
+    margin: 15px;
+    padding: 4px 8px;
+    border: 2px solid #fcdab7;
+    background: #fcdab7;
+    color:#1d2d50;
+    width: 90%;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    cursor:pointer;
+}
+
 
 /*Input name description*/
 #description{
@@ -123,4 +162,30 @@ h1{
 .delete{
     display: inline-block;
     width:25px;
+}
+
+
+.user-head{
+    display: flex;
+    flex-direction: row;
+    width:90%;
+    padding:2%;
+    margin-bottom: 2%;
+}
+.user-head div a{
+    text-decoration: none;
+    color:white;
+}
+.heading{
+    width:70%;
+    font-size: 2em;
+}
+.profile-link{
+    margin-right:-10%;
+    width:15%;
+    font-size:1.2em;
+    float: right;
+    cursor: pointer;
+    text-decoration: underline;
+
 }

@@ -20,7 +20,7 @@ module.exports.signIn=function(req,res){
         return res.redirect('/users/profile/:id')
     }
     //console.log("Error after here");
-    return res.render('user_sign_in',{
+    return res.render('home',{
         title:'todo'
     })
 }

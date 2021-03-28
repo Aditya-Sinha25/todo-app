@@ -1,15 +1,26 @@
 
 <h1>Todo app</h1>
-<ul>
-            <li>
-                <form action="/create-session" method="POST">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="password" name="password" placeholder="password" required>
-                    <input type="submit" value="Sign In">
-                </form>
-            </li>
-            <p>Or</p>
-            <li>
-                <a href="/sign-up">Sign Up</a>
-            </li>
+<div class="card">
+    <ul>
+        <li>
+            <form action="/create-session" id="create-list" method="POST">
+                <div>
+                    <input class="form-input" type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div>
+                    <input class="form-input" type="password" name="password" placeholder="Password" required>
+                </div>
+                <div>
+                    <input class="btn" type="submit" value="Sign In">
+                </div>
+                
+                
+            </form>
+        </li>
+        <p>Or</p>
+        <li id="create-list">
+            <a href="/sign-up">Sign Up</a>
+        </li>
 </ul>
+</div>
+

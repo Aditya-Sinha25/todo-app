@@ -1,23 +1,28 @@
 
-<h1>Todo app</h1>
+<div class="user-head">
+    <div class="heading">Todo app</div>
+    <div class="profile-link"><a href="/users/profile/<%=user._id%>"><%=user.name %></a></div>
+    <div class="profile-link"><a href="/sign-out">Sign Out</a></div>
+</div>
+
 <%if(user){ %>
-    <ul>
-        <li><a href="/users/profile/<%=user._id%>"><%=user.name %></a></li>
-        <li>
-            <form action="/users/list/<%=user._id%>" method="POST">
-                <input type="text" name="description" placeholder="Description">
-                <input type="text" name="category" placeholder="Category">
-                <input type="date" name="date" placeholder="Date">
-                <input type="submit" value="ADD">
-            </form>
-        </li>
-        <% for(let i of user.list) {%>
-                <li><a href="/users/destroy/<%= i._id%>">X</a><%= i.description %></li>
-                <li><%= i.category %></li>
-                <li><%= i.date %></li>
-        <%} %>
-            
-        
-        <li><a href="/sign-out">Sign Out</a></li>
-    </ul>
+    <div class="card">
+        <ul>
+            <li>
+                <form id="create-list" action="/users/list/<%=user._id%>" method="POST">
+                    <input class="form-input" type="text" name="description" placeholder="Description">
+                    <input class="form-input" type="text" name="category" placeholder="Category">
+                    <input class="form-input" type="date" name="date" placeholder="Date">
+                    <input class="btn" type="submit" value="ADD">
+                </form>
+            </li>
+            <% for(let i of user.list) {%>
+                    <li><a href="/users/destroy/<%= i._id%>">X</a><%= i.description %></li>
+                    <li><%= i.category %></li>
+                    <li><%= i.date %></li>
+            <%} %>
+                
+        </ul>
+    </div>
+    
 <% } %>
