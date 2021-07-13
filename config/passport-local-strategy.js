@@ -17,15 +17,27 @@ passport.use(new LocalStrategy({
                 return done(err);
             }
 
-            if(!user || user.password!=password){
-                console.log('Invalid username/password');
+            // if(!user || user.password!=password){
+            //     console.log('Invalid username/password');
+            //     req.flash('error','Invalid username/password');
+
+            //     return done(null,false);
+            // }
+
+            //return done(null,user);
+
+            if (user.validPassword(req.body.password)) { 
+                return done(null,user); 
+            } 
+            else { 
                 req.flash('error','Invalid username/password');
-
                 return done(null,false);
-            }
+            } 
 
-            return done(null,user);
+
+
         });
+
     }
 ));
 

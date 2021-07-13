@@ -4,6 +4,8 @@
             <%=locals.title %>
         </title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" />
+        <%- style%>
+        <script src="https://kit.fontawesome.com/f80c4e0252.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/css/index.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous"></script>
 
@@ -11,6 +13,8 @@
     <body>
         <%- body %>
 
+
+        <%- script %>
         <script>
             <% if(flash.success && flash.success.length>0){ %>
                 new Noty({

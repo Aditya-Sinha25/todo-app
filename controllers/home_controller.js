@@ -1,3 +1,7 @@
+const User =require('../models/user');
+
+
+
 module.exports.home =function(req,res){
     return res.render('home',{
         title:'home'
@@ -36,16 +40,46 @@ module.exports.create=function(req,res){
             console.log("Error in signing up the form");
             return
         }
-        if(!user){
-            User.create(req.body,function(err,user){
-                if(err){
-                    console.log("Error in finding the user");
-                    return
-                }return res.redirect('/sign-in');
-            })
-        }else{
-            return res.redirect('back');
-        }
+        // if(!user){
+        //     User.create(req.body,function(err,user){
+        //         if(err){
+        //             console.log("Error in finding the user");
+        //             return
+        //         }return res.redirect('/sign-in');
+        //     })
+        // }else{
+        //     return res.redirect('back');
+        // }
+
+
+            // Creating empty user object 
+            if(!user){
+
+                let newUser = new User(); 
+            
+                // Initialize newUser object with request data 
+                newUser.name = req.body.name, 
+            
+                newUser.email = req.body.email,
+            
+            
+                newUser.password=req.body.password
+            
+                                // Call setPassword function to hash password 
+                newUser.setPassword(req.body.password); 
+
+                newUser.save((err, User) => { 
+                    if (err) { 
+                        return res.redirect('back'); 
+                    } 
+                    else { 
+                        return res.redirect('/sign-in'); 
+                    } 
+                }); 
+
+            }else{
+                return res.redirect('back');
+            }
     });
 }
 
@@ -62,3 +96,6 @@ module.exports.destroySession =function(req,res){
     req.flash('success','You have logged out');
     return res.redirect('/');
 }
+
+
+//daily-list-maker

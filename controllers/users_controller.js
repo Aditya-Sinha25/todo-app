@@ -69,6 +69,7 @@ module.exports.profile =function(req,res){
 //}
 
 module.exports.createList =async function(req,res){
+    console.log(req.body);
     let list=await List.create({
         description:req.body.description,
         category:req.body.category,

@@ -63,7 +63,7 @@ app.use(customMiddleware.setFlash);
 
 app.use('/',require('./routes'));
 
-app.listen(port,function(err){
+app.listen(process.env.PORT,function(err){
     if(err){
         console.log(`Erorr in running the server : ${err}`);
     }

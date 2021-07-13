@@ -12,17 +12,21 @@
                 <form id="create-list" action="/users/list/<%=user._id%>" method="POST">
                     <input class="form-input" type="text" name="description" placeholder="Description">
                     <input class="form-input" type="text" name="category" placeholder="Category">
-                    <input class="form-input" type="date" name="date" placeholder="Date">
+                    <input class="form-input" id="date" type="date" name="date" placeholder="Date">
                     <input class="btn" type="submit" value="ADD">
                 </form>
             </li>
             <% for(let i of user.list) {%>
-                    <li><a href="/users/destroy/<%= i._id%>">X</a><%= i.description %></li>
+                <div class="list">
+                    <li><a id="destroy" href="/users/destroy/<%= i._id%>">  <i class="far fa-trash-alt"></i></a><%= i.description %></li>
                     <li><%= i.category %></li>
-                    <li><%= i.date %></li>
+                    <li><%= i.date.getDate()+"-"+(i.date.getMonth()+1)+"-"+i.date.getFullYear() %></li>
+                </div>
             <%} %>
                 
         </ul>
     </div>
     
 <% } %>
+
+<script src="/js/index.js"></script>
